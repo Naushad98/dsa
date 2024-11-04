@@ -1,0 +1,5 @@
+exp1:
+CREATE: Creates a new database object, like a table or an index.
+ALTER: Modifies an existing database object, such as adding a column to a table.
+DROP: Deletes an existing database object, like a table or a view.
+TRUNCATE: Removes all data from a table but keeps the structure intact (more efficient than deleting row-by-row with DELETE)
