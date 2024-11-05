@@ -1,0 +1,58 @@
+#include <stdio.h>
+int main()
+{
+int top,element,choice,a[10],i;
+int max;
+top=-1;
+printf("Enter the maximum length of stack: ");
+scanf("%d",&max);
+do
+{
+printf("\n------------------------------------------\n");
+ printf("1. PUSH\n");
+ printf("2. POP\n");
+printf("3. DISPLAY\n");
+printf("4. EXIT\n");
+printf("------------------------------------------\n");
+printf("Enter your choice:");
+scanf("%d",&choice);
+switch(choice)
+{
+case 1: if(top==max-1)
+{
+printf("OVERFLOW\n");
+}
+else
+{
+printf("Enter the Element : ");
+scanf("%d",&element);
+top=top+1;
+a[top]=element;
+printf("Entered Element is : %d",a[top]);
+} break;
+case 2: if(top==-1)
+{
+printf("UNDERFLOW");
+}
+else
+{
+element=a[top];
+printf("Deleted Element is %d",element);
+top=top-1;
+} break;
+case 3: if(top==-1)
+{
+printf("\nThere is no element");
+}
+else
+{
+printf("The elements are :");
+for(i=top;i>=0;i--)
+{
+printf("\t%d",a[i]);
+}
+} break;
+case 4: return;
+}
+}while(choice!=0);
+}
