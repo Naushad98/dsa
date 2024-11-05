@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Definition of a Node in a singly linked list
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to insert a node at a specified position
+void insertAtPosition(struct Node** head, int data, int position) {
+    // Create a new node and allocate memory
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+
+    // If inserting at the head (position 1)
+    if (position == 1) {
+        newNode->next = *head;
+        *head = newNode;
+        return;
+    }
+
+    // Traverse the list to find the node before the insertion point
+    struct Node* temp = *head;
+    for (int i = 1; i < position - 1 && temp != NULL; i++) {
+        temp = temp->next;
+    }
+
+    // If the position is invalid (greater than the length of the list + 1)
+    if (temp == NULL) {
+        printf("Position is out of bounds.\n");
+        free(newNode);
+        return;
+    }
+
+    // Insert the new node at the specified position
+    newNode->next = temp->next;
+    temp->next = newNode;
+}
+
+// Function to display the list
+void displayList(struct Node* head) {
+    struct Node* temp = head;
+    printf("The linked list is: ");
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node* head = NULL;
+    int choice = 1, data, position;
+
+    while (choice) {
+        printf("Enter data to insert: ");
+        scanf("%d", &data);
+        printf("Enter position to insert at: ");
+        scanf("%d", &position);
+        
+        insertAtPosition(&head, data, position);
+
+        printf("Do you want to continue inserting (0 for No, 1 for Yes): ");
+        scanf("%d", &choice);
+    }
+
+    // Display the final linked list
+    displayList(head);
+
+    return 0;
+}
