@@ -1,0 +1,73 @@
+#include<stdio.h>
+void main()
+{
+int rear,front,max,a[10],element,choice,i;
+rear=-1;
+front=-1;
+printf("Enter the maximum length of Queu3: ");
+scanf("%d",&max);
+do
+{
+printf("\n------------------------------------------\n");
+printf("1. INSERT\n");
+printf("2. DELETE\n");
+printf("3. DISPLAY\n");
+printf("4. EXIT\n");
+printf("------------------------------------------\n");
+printf("Enter your choice:");
+scanf("%d",&choice);
+switch(choice)
+{
+case 1: if(rear==max-1){
+printf("OVERFLOW\n");
+}
+else
+{
+if(front==-1 && rear==-1)
+{
+front=0;
+rear=0;
+printf("Enter the Element : ");
+scanf("%d",&element);
+a[rear]=element;
+printf("Entered Element is : %d",a[rear]);
+}
+else
+{
+printf("Enter the Element : ");
+scanf("%d",&element);
+rear=rear+1;
+a[rear]=element;
+printf("Entered Element is : %d",a[rear]);
+}
+} break;
+case 2: if(front==-1 || front>rear)
+{
+printf("UNDERFLOW");
+}
+else
+{
+element=a[front];
+printf("Deleted Element is %d",element);
+front=front+1;
+} break;
+case 3: if(rear==-1 || front>rear)
+{
+printf("\nThere is no element");
+}
+else
+{
+printf("The elements are :");
+for(i=front;i<=rear;i++)
+{
+printf("\t%d",a[i]);
+}
+} break;
+case 4: return;
+default :
+printf("enter a valid choice");
+brak;
+}
+}while(choice!=0); }
+
+
