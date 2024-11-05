@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>  // Include stdlib.h for malloc
+
+// Definition of a Node in a singly linked list
+struct Node {
+    int data;          
+    struct Node* next;
+};
+
+int main() {
+    struct Node *head = NULL, *newNode, *temp;
+    int choice = 1;  // Initialize choice to 1 so the loop can start
+
+    // Loop to create new nodes and add to the linked list
+    while (choice) {
+        newNode = (struct Node*) malloc(sizeof(struct Node)); // Correct struct name capitalization
+        printf("Enter data: ");
+        scanf("%d", &newNode->data);
+        newNode->next = NULL;
+
+        if (head == NULL) {
+            head = temp = newNode;
+        } else {
+            temp->next = newNode;
+            temp = newNode;
+        }
+
+        printf("Do you want to continue (0 for No, 1 for Yes): ");
+        scanf("%d", &choice);
+    }
+
+    // Print the linked list
+    temp = head;
+    printf("The linked list is: ");
+    while (temp != NULL) {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+
+    return 0;
+}
